@@ -1,0 +1,834 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Mathias Wojcik</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="bootstrap3/css/bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/demo.css" rel="stylesheet" />
+    <link href="assets/css/style.scss" rel="stylesheet" />
+    <!--     Font Awesome     -->
+    <link href="bootstrap3/css/font-awesome.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+
+
+</head>
+<style>
+    body {
+        font-family: 'Alegreya Sans SC', sans-serif;
+        background-color: #111111;
+    }
+    section {
+        background-color: #1ea2eb;
+        color: white;
+        text-align: center;
+        display: table;
+        min-width: 100%;
+        height: 45em;
+    }
+
+    section:nth-of-type(2n) {
+        background-color: #983379;
+    }
+
+    section.hero {
+        background-color: #bed600;
+    }
+
+    section h1 {
+        display: table-cell;
+        vertical-align: middle;
+        font-size: 56px;
+    }
+
+    nav {
+        min-height: 10vh;
+        width: 100%;
+        background-color: #111;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    nav.sticky {
+        position: fixed;
+        top: 0;
+    }
+
+    nav li {
+        display: inline-block;
+        line-height: 11vh;
+        padding: 0 40px;
+        border-right: 1px solid #1f1f1f;
+        margin: 0;
+    }
+
+    .hero-image {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://www.w3schools.com/howto/photographer.jpg");
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+
+    .hero-text {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+    }
+
+    .hero-text button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 10px 25px;
+        color: black;
+        background-color: #ddd;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .hero-text button:hover {
+        background-color: #555;
+        color: white;
+    }
+
+    .large-header {
+        position: relative;
+        width: 100%;
+        background: #111;
+        overflow: hidden;
+        background-size: cover;
+        background-position: center center;
+        z-index: 1;
+    }
+
+    canvas {
+        background: #0b222c00;
+        vertical-align: bottom;
+        width: 100%;
+        height: 100%;
+    }
+
+    .demo .large-header {
+        background:
+    /* top, transparent red, faked with gradient */
+    linear-gradient(
+      rgba(0, 0, 0, 0.85),
+      rgba(0, 0, 0, 0.85)
+      ),
+        url("assets/img/15505.jpg");
+    }
+
+    .main-title {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        color: #F9F1E9;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate3d(-50%, -50%, 0);
+        transform: translate3d(-50%, -50%, 0);
+    }
+
+    .demo .main-title {
+        text-transform: uppercase;
+        font-size: 4.2em;
+        letter-spacing: 0.1em;
+    }
+
+    .main-title .thin {
+        font-weight: 200;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .demo .main-title {
+            font-size: 3em;
+        }
+    }
+
+    .container {
+        padding-right: 0px;
+        padding-left: 0px;
+        margin-right: 0px;
+        margin-left: 0px;
+        width: 100%;
+    }
+
+     ::selection {
+        background-color: #1ea2eb;
+        color: #111;
+    }
+
+     ::-moz-selection {
+        background-color: #1ea2eb;
+        color: #111;
+    }
+
+    .theme-color {
+        color: #1ea2eb;
+    }
+
+    .home-banner .social-icons a:hover,
+    .btn-theme,
+    .theme-after:after,
+    .theme-bg {
+        background: #bed600;
+    }
+
+    section:nth-of-type(2n) {
+        background-color: #111;
+    }
+
+    .home-banner .social-icons a:hover,
+    .btn-theme,
+    .theme-after:after,
+    .theme-bg {
+        background: #fff;
+    }
+
+    .dark-color {
+        color: #ffffff;
+    }
+
+    .resume-row li {
+        position: relative;
+        padding: 0;
+        border: 1px solid #ffffff;
+        border-bottom: 1px solid #ffffff;
+        margin-bottom: 23px;
+    }
+
+    .skills span {
+        font-size: 10px;
+        padding: 0px 5px;
+        border-radius: 15px;
+        color: #ef4343;
+        font-weight: 600;
+        position: absolute;
+        top: 0;
+        right: 0;
+        line-height: 14px;
+    }
+
+    .progress-lt .progress .progress-bar {
+        background: #ef4343;
+    }
+
+    .resume-row:after {
+        position: absolute;
+        top: 10px;
+        bottom: 0;
+        left: 0;
+        width: 1px;
+        content: "";
+        border-left: 1px dashed #ffffff;
+    }
+
+    .resume-row .r-name {
+        border-bottom: 1px solid #ffffff;
+        padding: 10px 20px 7px 52px;
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+    }
+
+    .skills span {
+        font-size: 10px;
+        padding: 0px 5px;
+        border-radius: 15px;
+        color: #fff;
+        font-weight: 600;
+        position: absolute;
+        top: 0;
+        right: 0;
+        line-height: 14px;
+    }
+
+    .resume-row li:after {
+        content: "";
+        width: 25px;
+        height: 1px;
+        position: absolute;
+        top: 25px;
+        left: -26px;
+        border-top: 1px dashed #fff;
+    }
+
+    nav {
+        min-height: 10vh;
+        width: 100%;
+        background-color: #111;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        z-index: 10;
+    }
+
+    .home-banner .social-icons a:hover,
+    .btn-theme,
+    .theme-after:after,
+    .theme-bg {
+        background: #ef4343;
+    }
+
+    .skills h6 {
+        color: #feffff;
+        font-weight: 500;
+        font-size: 12px;
+        margin: 0 0 6px;
+        text-transform: uppercase;
+    }
+
+    .page-content {
+        padding: 50px;
+        max-width: none;
+        width: 100%;
+    }
+    /* total width */
+
+    .scrollbar::-webkit-scrollbar {
+        background-color: #fff;
+        width: 16px
+    }
+    /* background of the scrollbar except button or resizer */
+
+    .scrollbar::-webkit-scrollbar-track {
+        background-color: #fff
+    }
+
+    .scrollbar::-webkit-scrollbar-track:hover {
+        background-color: #f4f4f4
+    }
+    /* scrollbar itself */
+    a:hover, a:focus {
+    color: #ff4b4b;
+    text-decoration: none;
+}
+    .scrollbar::-webkit-scrollbar-thumb {
+        background-color: #babac0;
+        border-radius: 16px;
+        border: 5px solid #fff
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb:hover {
+        background-color: #a0a0a5;
+        border: 4px solid #f4f4f4
+    }
+    /* set button(top and bottom of the scrollbar) */
+
+    .scrollbar::-webkit-scrollbar-button {
+        display: none
+    }
+    /* div box */
+
+    .scrollbar {
+        height: 75vh;
+        width: 25vw;
+        min-width: 150px;
+        background-color: transparent;
+        overflow-y: scroll
+    }
+
+    .overflow {
+        min-height: 100vh
+    }
+
+    body {
+        background-color: #111111;
+    }
+
+    a {
+        color: #ef4343;
+    }
+
+    *::-webkit-scrollbar,
+    *::-webkit-scrollbar-thumb {
+        width: 26px;
+        border-radius: 13px;
+        background-clip: padding-box;
+        border: 10px solid transparent;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        box-shadow: inset 0 0 0 10px;
+    }
+
+    div:hover {
+        color: rgb(255, 255, 255);
+    }
+    @media (max-width: 700px) {
+   sticky.nav, nav, .sticky, #sticky {
+        position:relative !important; 
+        }
+}
+</style>
+</head>
+
+<body translate="no">
+    <section>
+        <div class="container demo">
+            <div class="content">
+                <div id="large-header" class="large-header">
+                    <canvas id="demo-canvas"></canvas>
+                    <h1 class="main-title"><span class="thin">Mathias Wojcik</span><br> 16 ÅR</h1>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+    <nav class="">
+        <ul>
+            <li> <a href="assets/A+CV.pdf">Download ansøgning og cv</a></li>
+            <li>Telefon: <a href="tel:+4522836377">+4522836377</a></li>
+            <li>Mail: <a href="mailto:math782q@edu.sde.dk">math782q@edu.sde.dk</a></li>
+        </ul>
+    </nav>
+    <section>
+        <div class="page-content">
+
+            <!--
+                    ==========================
+                      Page Titel
+                    ==========================
+                    -->
+            <div class="section-titel">
+                <h6 class="theme-after dark-color">Timeline</h6>
+                <div class="st-title">
+                    <h2 class="theme-after dark-color">CV</h2>
+                </div>
+            </div>
+
+            <!--
+                    ==========================
+                      Resume Box
+                    ==========================
+                    -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="resume-row">
+                        <h2 class="theme-after dark-color"></h2>
+                        <ul>
+                            <li>
+                                <div class="r-name">
+                                    <i class="theme-bg ti-briefcase"></i>
+                                    <span class="dark-color">Folkeskolen</span>
+                                    <label>AUGUST 2009 - JUNE 2019</label>
+                                </div>
+                                <div class="r-info">
+                                    <p>Folkeskolen fra 0 til 9 klasse.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="r-name">
+                                    <i class="theme-bg ti-briefcase"></i>
+                                    <span class="dark-color">Fakta</span>
+                                    <label>JULY 2019 - CURRENTLY</label>
+                                </div>
+                                <div class="r-info">
+                                    <p>Arbejder i fakta :)</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- col -->
+                <div class="col-md-6">
+                    <div class="resume-row">
+                        <h2 class="theme-after dark-color"></h2>
+                        <ul>
+                            <li>
+                                <div class="r-name">
+                                    <i class="theme-bg fas fa-graduation-cap"></i>
+                                    <span class="dark-color">SDE - Datatekniker | IT-Supporter</span>
+                                    <label>AUGUST 2019 - CURRENTLY</label>
+                                </div>
+                                <div class="r-info">
+                                    <p>Lige nu tager jeg uddanelsen Datatekniker og IT-Supporter</p>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- col -->
+            </div>
+            <!-- row -->
+
+            <div class="skill-row m-30px-t sm-m-20px-t">
+                <div class="sub-title m-30px-b">
+                    <h2 class="dark-color theme-after">My Skills</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 p-30px-r sm-p-15px-r">
+                        <div class="skills">
+                            <div class="progress-lt">
+                                <h6>Dansk</h6>
+                                <span class="theme-bg">95%</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 95%;">
+                                    </div>
+                                    <!-- /progress-bar -->
+                                </div>
+                                <!-- /progress -->
+                            </div>
+                            <!-- /progress-lt -->
+                            <div class="progress-lt">
+                                <h6>Engelsk</h6>
+                                <span class="theme-bg">89%</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 89%;">
+                                    </div>
+                                    <!-- /progress-bar -->
+                                </div>
+                                <!-- /progress -->
+                            </div>
+                            <!-- /progress-lt -->
+                            <div class="progress-lt">
+                                <h6>HTML & CSS</h6>
+                                <span class="theme-bg">85%</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 85%;">
+                                    </div>
+                                    <!-- /progress-bar -->
+                                </div>
+                                <!-- /progress -->
+                            </div>
+                            <!-- /progress-lt -->
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-30px-l sm-p-15px-l sm-m-30px-t">
+
+                        <div class="skills">
+                            <div class="progress-lt">
+                                <h6>Golang</h6>
+                                <span class="theme-bg">25%</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 25%;">
+                                    </div>
+                                    <!-- /progress-bar -->
+                                </div>
+                                <!-- /progress -->
+                            </div>
+                            <!-- /progress-lt -->
+                            <div class="progress-lt">
+                                <h6>Dev OPS</h6>
+                                <span class="theme-bg">60%</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 60%;">
+                                    </div>
+                                    <!-- /progress-bar -->
+                                </div>
+                                <!-- /progress -->
+                            </div>
+                            <!-- /progress-lt -->
+                            <div class="progress-lt">
+                                <h6>Fejlfinding</h6>
+                                <span class="theme-bg">60%</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 60%;">
+                                    </div>
+                                    <!-- /progress-bar -->
+                                </div>
+                                <!-- /progress -->
+                            </div>
+                            <!-- /progress-lt -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section style="background-color: #111111; height: 30em;">
+        <div class="section-titel">
+            <h6 class="theme-after dark-color">Info</h6>
+            <div class="st-title">
+                <h2 class="theme-after dark-color">Hvorfor mig?</h2>
+            </div>
+        </div>
+                <p style="display: table-row;
+        vertical-align: middle;font-size:20px;    width: 70%;
+    padding-right: 20px;">Fordi at jeg brænder for at arbejde inden for IT branchen som datatekniker. Jeg er klar på at hoppe i med begge føder, og komme med en god stemning og et smil. Jeg er klar på at gå i dybden og gøre det arbejde der er nødvendigt </p>
+    </section>
+    <section style="background-color: #111111; height: 30em; padding-top:25px;">
+        <div class="section-titel">
+            <h6 class="theme-after dark-color">Info</h6>
+            <div class="st-title">
+                <h2 class="theme-after dark-color">Hvad kan jeg?</h2>
+            </div>
+        </div>
+                <p style="display: table-row;
+        vertical-align: middle;font-size:20px;    width: 70%;
+    padding-right: 20px;">Jeg kan hjælpe med god motivation, uden brok og med entusiasme. Jeg kan samle computere, fejl diagnose og være selvstædig. Jeg er også rigtig god til at organisere min tid i forhold til hvad jeg arbejder med, og gå i dybden. Jeg er også super motiveret af computere og netværk.
+</p>
+    </section>
+    <section style="background-color: #111111; height: 20em; padding-top:25px;">
+        <div class="section-titel">
+            <h6 class="theme-after dark-color">Info</h6>
+            <div class="st-title">
+                <h2 class="theme-after dark-color">Min fritid</h2>
+            </div>
+        </div>
+                <p style="display: table-row;
+        vertical-align: middle;font-size:20px;    width: 70%;
+    padding-right: 20px;">Jeg arbejder rigtig meget med computere i min fritid. Jeg kan også godt lide at kode. Jeg arbejder rigtigt meget med kryptovaluta og kryptomining.
+</p>
+</section>
+<!-- Footer -->
+<!-- Footer -->
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3" style="padding-top:20px;padding-bottom:20px;color:#fff;">© 2019-2020 Copyright:
+          <a href=""> Mathias Wojcik </a>
+        </div>
+        <!-- Copyright -->
+
+      </footer>
+      <!-- Footer -->
+    <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script id="rendered-js">
+        $(document).ready(function() {
+
+            // Even when the window is resized, run this code.
+            $(window).resize(function() {
+
+                // Variables
+                var windowHeight = $(window).height();
+
+                // Find the value of 90% of the viewport height
+                var ninetypercent = .9 * windowHeight;
+
+                // When the document is scrolled ninety percent, toggle the classes
+                // Does not work in iOS 7 or below
+                // Hasn't been tested in iOS 8
+                $(document).scroll(function() {
+
+                    // Store the document scroll function in a variable
+                    var y = $(this).scrollTop();
+
+                    // If the document is scrolled 90%
+                    if (y > ninetypercent) {
+
+                        // Add the "sticky" class
+                        $('nav').addClass('sticky');
+                    } else {
+                        // Else remove it.
+                        $('nav').removeClass('sticky');
+                    }
+                });
+
+                // Call it on resize.
+            }).resize();
+
+        }); // jQuery
+        //# sourceURL=pen.js
+    </script>
+    <script src="jquery/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
+    <script src="jquery/hero.js" type="text/javascript"></script>
+    <script src="bootstrap3/js/bootstrap.js" type="text/javascript"></script>
+    <script src="assets/js/get-shit-done.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/TweenLite.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/EasePack.min.js"></script>
+    <script>
+    (function() {
+
+var width, height, largeHeader, canvas, ctx, points, target, animateHeader = true;
+
+// Main
+initHeader();
+initAnimation();
+addListeners();
+
+function initHeader() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    target = {x: width/2, y: height/2};
+
+    largeHeader = document.getElementById('large-header');
+    largeHeader.style.height = height+'px';
+
+    canvas = document.getElementById('demo-canvas');
+    canvas.width = width;
+    canvas.height = height;
+    ctx = canvas.getContext('2d');
+
+    // create points
+    points = [];
+    for(var x = 0; x < width; x = x + width/20) {
+        for(var y = 0; y < height; y = y + height/20) {
+            var px = x + Math.random()*width/20;
+            var py = y + Math.random()*height/20;
+            var p = {x: px, originX: px, y: py, originY: py };
+            points.push(p);
+        }
+    }
+
+    // for each point find the 5 closest points
+    for(var i = 0; i < points.length; i++) {
+        var closest = [];
+        var p1 = points[i];
+        for(var j = 0; j < points.length; j++) {
+            var p2 = points[j]
+            if(!(p1 == p2)) {
+                var placed = false;
+                for(var k = 0; k < 5; k++) {
+                    if(!placed) {
+                        if(closest[k] == undefined) {
+                            closest[k] = p2;
+                            placed = true;
+                        }
+                    }
+                }
+
+                for(var k = 0; k < 5; k++) {
+                    if(!placed) {
+                        if(getDistance(p1, p2) < getDistance(p1, closest[k])) {
+                            closest[k] = p2;
+                            placed = true;
+                        }
+                    }
+                }
+            }
+        }
+        p1.closest = closest;
+    }
+
+    // assign a circle to each point
+    for(var i in points) {
+        var c = new Circle(points[i], 2+Math.random()*2, 'rgba(255,255,255,0.3)');
+        points[i].circle = c;
+    }
+}
+
+// Event handling
+function addListeners() {
+    if(!('ontouchstart' in window)) {
+        window.addEventListener('mousemove', mouseMove);
+    }
+    window.addEventListener('scroll', scrollCheck);
+    window.addEventListener('resize', resize);
+}
+
+function mouseMove(e) {
+    var posx = posy = 0;
+    if (e.pageX || e.pageY) {
+        posx = e.pageX;
+        posy = e.pageY;
+    }
+    else if (e.clientX || e.clientY)    {
+        posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+        posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+    }
+    target.x = posx;
+    target.y = posy;
+}
+
+function scrollCheck() {
+    if(document.body.scrollTop > height) animateHeader = false;
+    else animateHeader = true;
+}
+
+function resize() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    largeHeader.style.height = height+'px';
+    canvas.width = width;
+    canvas.height = height;
+}
+
+// animation
+function initAnimation() {
+    animate();
+    for(var i in points) {
+        shiftPoint(points[i]);
+    }
+}
+
+function animate() {
+    if(animateHeader) {
+        ctx.clearRect(0,0,width,height);
+        for(var i in points) {
+            // detect points in range
+            if(Math.abs(getDistance(target, points[i])) < 4000) {
+                points[i].active = 0.3;
+                points[i].circle.active = 0.6;
+            } else if(Math.abs(getDistance(target, points[i])) < 20000) {
+                points[i].active = 0.1;
+                points[i].circle.active = 0.3;
+            } else if(Math.abs(getDistance(target, points[i])) < 40000) {
+                points[i].active = 0.02;
+                points[i].circle.active = 0.1;
+            } else {
+                points[i].active = 0;
+                points[i].circle.active = 0;
+            }
+
+            drawLines(points[i]);
+            points[i].circle.draw();
+        }
+    }
+    requestAnimationFrame(animate);
+}
+
+function shiftPoint(p) {
+    TweenLite.to(p, 1+1*Math.random(), {x:p.originX-50+Math.random()*100,
+        y: p.originY-50+Math.random()*100, ease:Circ.easeInOut,
+        onComplete: function() {
+            shiftPoint(p);
+        }});
+}
+
+// Canvas manipulation
+function drawLines(p) {
+    if(!p.active) return;
+    for(var i in p.closest) {
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(p.closest[i].x, p.closest[i].y);
+        ctx.strokeStyle = 'rgba(239,67,67,'+ p.active+')';
+        ctx.stroke();
+    }
+}
+
+function Circle(pos,rad,color) {
+    var _this = this;
+
+    // constructor
+    (function() {
+        _this.pos = pos || null;
+        _this.radius = rad || null;
+        _this.color = color || null;
+    })();
+
+    this.draw = function() {
+        if(!_this.active) return;
+        ctx.beginPath();
+        ctx.arc(_this.pos.x, _this.pos.y, _this.radius, 0, 2 * Math.PI, false);
+        ctx.fillStyle = 'rgba(239,67,67,'+ _this.active+')';
+        ctx.fill();
+    };
+}
+
+// Util
+function getDistance(p1, p2) {
+    return Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);
+}
+
+})();
+    </script>
+</html>
